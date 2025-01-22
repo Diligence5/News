@@ -27,6 +27,7 @@ let strings = new LocalizedStrings({
     country: 'Country',
     pincode: 'Pincode',
     save_address: 'Save Address',
+    district: 'District',
   },
   it: {},
 });

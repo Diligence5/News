@@ -13,6 +13,7 @@ interface Images {
   icon_succcess: ImageSourcePropType;
   icon_eye_close: ImageSourcePropType;
   icon_open_eye: ImageSourcePropType;
+  icon_drop_down: ImageSourcePropType;
 }
 
 const images: Images = {
@@ -28,5 +29,6 @@ const images: Images = {
   icon_succcess: require('./images/icon_succcess.png'),
   icon_eye_close: require('./images/icon_eye_close.png'),
   icon_open_eye: require('./images/icon_open_eye.png'),
+  icon_drop_down: require('./images/icon_drop_down.png'),
 };
 export default images;

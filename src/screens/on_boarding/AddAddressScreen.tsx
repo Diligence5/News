@@ -1,81 +1,106 @@
 import React from 'react';
-import { SafeAreaView, StatusBar, Text, View, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { SafeAreaView, StatusBar, Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Formik } from 'formik';
-import CustomButton from '../../components/CustomButton'; // Ensure this path is correct
+import CustomButton from '../../components/CustomButton';
+import CustomTextInput from '../../components/CustomTextInput';
+import CustomViewForDropDown from '../../components/CustomViewForDropDown';
 import { Color, FontSizes } from '../../themes/theme';
-import images from '../../../assets/images';
+import { FontFamily } from '../../constants/FontFamily';
 import strings from '../../localization/strings';
 
 const AddAddressScreen: React.FC = () => {
+    const handleDropdownPress = (field: string) => {
+        console.log(`Dropdown pressed for: ${field}`);
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             <StatusBar backgroundColor={Color.primary} barStyle="light-content" />
+            <View style={styles.header}>
+                <Text style={styles.headerTitle}>{strings.add_address}</Text>
+            </View>
             <ScrollView contentContainerStyle={styles.scrollContainer}>
-                <Text style={styles.title}>{strings.add_address}</Text>
                 <Formik
-                    initialValues={{ wingFlatNo: '', area: '', locality: '', city: '', state: '', country: '', pincode: '' }}
+                    initialValues={{
+                        wingFlatNo: '',
+                        area: '',
+                        locality: '',
+                        city: '',
+                        district: '',
+                        state: '',
+                        country: '',
+                        pincode: ''
+                    }}
                     onSubmit={(values) => {
                         console.log(values);
-                        // Handle form submission
                     }}
                 >
-                    {({ handleChange, handleBlur, handleSubmit, values }) => (
-                        <>
-                            <TextInput
-                                style={styles.input}
+                    {({ handleChange, handleSubmit, values }) => (
+                        <View style={styles.formContainer}>
+                            <CustomTextInput
+                                title={strings.wing_flat_no}
                                 placeholder={strings.wing_flat_no}
+                                textInputStyle={styles.textInput}
                                 onChangeText={handleChange('wingFlatNo')}
-                                onBlur={handleBlur('wingFlatNo')}
                                 value={values.wingFlatNo}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomTextInput
+                                title={strings.area}
                                 placeholder={strings.area}
+                                textInputStyle={styles.textInput}
                                 onChangeText={handleChange('area')}
-                                onBlur={handleBlur('area')}
                                 value={values.area}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomTextInput
+                                title={strings.locality}
                                 placeholder={strings.locality}
+                                textInputStyle={styles.textInput}
                                 onChangeText={handleChange('locality')}
-                                onBlur={handleBlur('locality')}
                                 value={values.locality}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomViewForDropDown
+                                title={strings.city}
                                 placeholder={strings.city}
                                 onChangeText={handleChange('city')}
-                                onBlur={handleBlur('city')}
+                                pressOnDropDown={() => handleDropdownPress('city')}
                                 value={values.city}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomViewForDropDown
+                                title={strings.district}
+                                placeholder={strings.district}
+                                onChangeText={handleChange('district')}
+                                pressOnDropDown={() => handleDropdownPress('district')}
+                                value={values.district}
+                            />
+                            <CustomViewForDropDown
+                                title={strings.state}
                                 placeholder={strings.state}
                                 onChangeText={handleChange('state')}
-                                onBlur={handleBlur('state')}
+                                pressOnDropDown={() => handleDropdownPress('state')}
                                 value={values.state}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomViewForDropDown
+                                title={strings.country}
                                 placeholder={strings.country}
                                 onChangeText={handleChange('country')}
-                                onBlur={handleBlur('country')}
+                                pressOnDropDown={() => handleDropdownPress('country')}
                                 value={values.country}
                             />
-                            <TextInput
-                                style={styles.input}
+                            <CustomTextInput
+                                title={strings.pincode}
                                 placeholder={strings.pincode}
+                                textInputStyle={styles.textInput}
                                 onChangeText={handleChange('pincode')}
-                                onBlur={handleBlur('pincode')}
                                 value={values.pincode}
+                                keyboardType="numeric"
                             />
-                            <CustomButton 
-                                title={strings.save_address || 'Save Address'}
-                                onPress={handleSubmit} 
-                                loading={false} 
+                            <CustomButton
+                                title={strings.save_address}
+                                onPress={handleSubmit}
+                                loading={false}
+                                buttonStyle={{ marginTop: 28 }}
                             />
-                        </>
+                        </View>
                     )}
                 </Formik>
             </ScrollView>
@@ -88,25 +113,26 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Color.white,
     },
+    header: {
+        backgroundColor: Color.primary,
+        height: 56,
+        justifyContent: 'center',
+        paddingHorizontal: 16,
+    },
+    headerTitle: {
+        color: Color.white,
+        fontSize: FontSizes.size18,
+        fontFamily: FontFamily.bold,
+    },
+    textInput: {
+        color: Color.placeholder,
+    },
     scrollContainer: {
-        padding: 20,
+        flexGrow: 1,
     },
-    title: {
-        fontSize: FontSizes.size24,
-        fontFamily: 'FontFamily.bold',
-        color: Color.black_text,
-        marginBottom: 20,
-    },
-    input: {
-        height: 50,
-        borderColor: Color.border,
-        borderWidth: 1,
-        borderRadius: 8,
-        paddingHorizontal: 10,
-        marginBottom: 15,
-        fontSize: FontSizes.size16,
-        fontFamily: 'FontFamily.regular',
-    },
+    formContainer: {
+        padding: 16,
+    }
 });
 
 export default AddAddressScreen; 

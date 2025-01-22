@@ -43,6 +43,11 @@ function Routes(): React.JSX.Element {
                 {!accessToken ? (
                     <>
                         <Stack.Screen name="Login" component={SignInScreen} options={stackOption} />
+                        <Stack.Screen
+                            name="AddAddress"
+                            component={AddAddressScreen}
+                            options={stackOption}
+                        />
                     </>
                 ) : (
                     <>
@@ -55,11 +60,7 @@ function Routes(): React.JSX.Element {
                                 animation: "none", // Override the animation for this screen
                             }}
                         />
-                        <Stack.Screen
-                            name="AddAddress"
-                            component={AddAddressScreen}
-                            options={stackOption}
-                        />
+                       
                     </>
                 )}
             </Stack.Navigator>

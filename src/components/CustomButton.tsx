@@ -31,7 +31,8 @@ const CustomButton: React.FC<CustomButtonProps> = ({ title, onPress, loading,but
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: Color.secondary,
+        backgroundColor: Color.primary,
+        borderRadius: 12,
         height: 48,
         alignItems: 'center',
         justifyContent: 'center',
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonText: {
-        fontFamily: FontFamily.medium,
+        fontFamily: FontFamily.bold,
         fontSize: FontSizes.size16,
         color: Color.white,
         lineHeight: 16,

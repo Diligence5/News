@@ -81,24 +81,22 @@ const styles = StyleSheet.create({
       marginTop: 10,
     },
     header_text_style: {
-      fontFamily: FontFamily.medium,
+      fontFamily: FontFamily.semi_bold,
       fontSize: FontSizes.size14,
-      color: Color.primary,
+      color: Color.black_text,
     },
     text_input_container: {
-      height: 48,
-      borderWidth: 1,
-      paddingHorizontal: 16,
-  
+      backgroundColor: Color.text_input_bg,
       borderColor: Color.placeholder,
       marginTop: 8,
-      borderRadius: 2, // Optional: For rounded input
+      borderRadius: 8, // Optional: For rounded input
       flexDirection: 'row',
     },
     tex_input_style: {
       fontSize: FontSizes.size14,
       fontFamily: FontFamily.medium,
-      color: Color.primary,
+      color: Color.placeholder,
+      padding: 16,
       flex: 1,
     },
     

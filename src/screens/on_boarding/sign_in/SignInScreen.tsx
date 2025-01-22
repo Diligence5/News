@@ -71,7 +71,9 @@ function SignInScreen(): React.JSX.Element {
 
     const handleSignIn = () => {
         // Logic for signing in (e.g., API call)
-        setModalVisible(true); // Show the OTP modal
+        // setModalVisible(true); // Show the OTP modal
+        // Navigate to AddAddressScreen
+        navigation.navigate('AddAddress');
     };
 
     return (
